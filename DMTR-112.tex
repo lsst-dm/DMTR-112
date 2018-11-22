@@ -1,0 +1,466 @@
+\documentclass[DM,lsstdraft,STR,toc]{lsstdoc}
+\usepackage{geometry}
+\usepackage{longtable,booktabs}
+
+\input meta.tex
+
+\providecommand{\tightlist}{
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\begin{document}
+
+\def\milestoneName{Camera data processing}
+\def\milestoneId{LDM-503-07}
+\def\product{Data Management}
+
+\setDocCompact{true}
+
+\title[\milestoneId{}~Test Report]{\milestoneId{} (\milestoneName{})~Test Plan and Report}
+\setDocRef{\lsstDocType-\lsstDocNum}
+\setDocDate{\vcsdate}
+\setDocUpstreamLocation{\url{https://github.com/lsst/lsst-texmf/examples}}
+\author{ John Swinbank }
+
+\input history_and_info.tex
+
+
+\setDocAbstract{
+This is the test plan and report for \milestoneId{} (\milestoneName{}), an LSST DM level 1 milestone pertaining to the \product{}.
+}
+
+
+\maketitle
+
+\section{Introduction}
+\label{sect:intro}
+
+
+\subsection{Objectives}
+\label{sect:objectives}
+
+This test plan demonstrates that the LSST Science Pipelines can
+successfully be used to load and perform basic processing on data from
+the LSST Camera test systems.\\[2\baselineskip]In particular, it will
+demonstrate that:\\[2\baselineskip]
+
+\begin{itemize}
+\tightlist
+\item
+  Data from the Camera test systems has been made available at the LSST
+  Data Facility;
+\item
+  Data from the Camera test systems can be accessed using the ``Data
+  Butler'' I/O abstraction, and loaded into the LSST Science Platform
+  Notebook Aspect for processing and inspection;
+\item
+  Basic LSST Science Pipelines Tasks can be used to process and
+  manipulate Camera data;
+\item
+  Camera data can be sent to the Firefly visualization tool for display.
+\end{itemize}
+
+Verification that the data processing is ``correct'' falls outside the
+scope of this test plan: both Camera data and DM code is evolving
+rapidly, and this exercise will not demonstrate that particular
+thresholds in terms of data processing fidelity have been reached.
+Rather, the focus here is on demonstrating successful integration and
+interface compatibility.\\[2\baselineskip]
+
+\subsection{Scope}\label{scope}
+
+The overall strategy for testing and verification with LSST Data
+Management is described in \citeds{LDM-503}.\\
+Success in this test plan is intended to demonstrate completion of the
+milestone LDM-503-07 ``Camera Data Processing''.
+
+
+
+\subsection{System Overview}
+\label{sect:systemoverview}
+
+This test plan addresses primarily the integration between early data
+coming from the LSST Camera and the data access facilities provided by
+the LSST Data Management system.\\[2\baselineskip]In the process, it
+will exercise:
+
+\begin{itemize}
+\tightlist
+\item
+  The ``Data Butler'' I/O abstraction provided by Data Management;
+\item
+  The Notebook Aspect of the LSST Science Platform;
+\item
+  Algorithmic code provided by the LSST Science Pipelines;
+\item
+  The Firefly image display tool provided by the Science User Interface
+  and Tools group.
+\end{itemize}
+
+\textbf{Applicable Documents}\\[2\baselineskip]\citeds{LDM-503} Data Management
+Test Plan\\
+\citeds{LDM-151} Data Management Science Pipelines Design\\
+\citeds{LDM-152} Data Management Middleware Design\\
+\citeds{LDM-542} Science Platform Design
+
+
+\subsection{References}
+\label{sect:references}
+\renewcommand{\refname}{}
+\bibliography{lsst,refs,books,refs_ads}
+
+\subsection{Document Overview and Procedure}
+\label{sect:docoverview}
+
+This document is generated from Jira, obtaining the relevant information from the 
+\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testPlan/LVV-P16}{LVV-P16}
+~Jira Test Plan and related Test Cycles (
+\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCycle/LVV-C19}{LVV-C19}
+).
+
+The following general sections are completed before the start of the test activity.
+
+Section \ref{sect:intro} provides an overview of the test campaing, the system under test (\product{}), the documentation, and explains how this document is organized.
+Section \ref{sect:configuration}  describes the configuration used for this test.
+Section \ref{sect:personnel} lists all people and roles involved.
+Section \ref{sect:plannedtestactivities} provides the list of planned test cycles and test cases, including all relevant informatino that fully describe the the test campaign.
+The content provided by the above sections shall be sufficient to prove that that the test campaign is ready to start.
+
+Once the above sections are completed, this document can be reviewed by the product leader, the involved opersonel (section \ref{sect:personnel} and by who requested the test campaign.
+If everybody agree that the test is ready to start, the Jira Test Plan shall be set to {\bf Approved} by the \product{} product leader.
+A first issue of this document can be uploaded in docushare for record.
+
+Section \ref{sect:testresults} is filled after the test activity is completed and the Jira Test Cycles involved have been set to {\bf Done}.
+The first subsection \ref{sect:overview} provides a summary view of the results, in table \ref{table:summary}, 
+an overall assessment statement and suggestions on possible improvements.
+The subsection \ref{sect:detailedtestresults} provides detailed results for each step in each test case.
+
+When completed, this document has to be approved by who requested the test activity and
+the final issued uploaded in docushate. 
+The status of the Jira Test Plan shall then be set to {\bf Completed}.
+
+The actual status of the Jira test plan LVV-P16 is Draft.
+
+\section{Test Configuration}
+\label{sect:configuration}
+
+Observing is not required for this test campaign.
+
+\subsection{Verification Environment}
+\label{sect:hwconf}
+Tests of the Data Butler, the Science Pipelines and the Firefly image
+display tool will take place within the Notebook Aspect of the LSST
+Science Platform, as deployed at
+\url{https://lsst-lspdev.ncsa.illinois.edu/nb} and documented at
+https://nb.lsst.io. This provides a flexible and configurable
+environment with access to large-capacity filesystems at the LSST Data
+Facility.\\[2\baselineskip]Individual tests will be based on specific
+machine images provided within the Notebook Aspect, as documented in the
+relevant test cases.~
+
+
+
+
+
+\section{Personnel}
+\label{sect:personnel}
+
+Following personnel is involved in the test activity:
+
+\begin{itemize}
+\item Test Plan (LVV-P16) owner: John Swinbank (swinbank)
+\item Test Cycles:
+\begin{itemize}
+  \item LVV-C19:  ()
+  \begin{itemize}
+    \item Test case LVV-T374: John Swinbank (swinbank)
+    \item Test case LVV-T368: John Swinbank (swinbank)
+  \end{itemize}
+\end{itemize}
+\item Additional Test Personnel involved: None
+\end{itemize}
+
+\newpage
+\section{Planned Test Activities}
+\label{sect:plannedtestactivities}
+
+
+\subsection{Test Cycle LVV-C19}
+
+LDM-503-07: Camera Data Processing\\
+Status: Not Executed
+
+
+This test cycle defines tests to be performed in late 2018 to
+demonstrate the current state of integration between the Data Management
+System and current Camera test datasets.
+
+
+
+\subsubsection{LVV-T374}
+
+This test will check:
+
+\begin{itemize}
+\tightlist
+\item
+  That raw Camera test data is available on a filesystem in the LSST
+  Data Facility;
+\item
+  That raw Camera test data can be ingested and made available through
+  the Data Management I/O abstraction (the ``Data Butler'').
+\end{itemize}
+
+
+\begin{longtable}[]{p{1.3cm}p{15cm}}
+%\toprule
+Step & {Description} \\ \toprule
+\endhead
+
+
+\multirow{1}{*}{ 1 } &
+\begin{minipage}[t]{13cm}{\footnotesize
+Connect to the Notebook Aspect of the Science Platform following the
+instructions at https://nb.lsst.io/. Log in, and ``spawn'' a new machine
+with image ``Weekly 2018\_45`` and size ``large''.
+
+\vspace{\dp0}
+} \end{minipage} \\
+\\ \midrule
+\multirow{1}{*}{ 2 } &
+\begin{minipage}[t]{13cm}{\footnotesize
+Create a terminal session. Use it to set up the LSST tools, then
+download and build version 5c12b06e6 of
+obs\_lsst:\\[2\baselineskip]\hspace*{0.333em} ~\$ source
+/opt/lsst/software/stack/loadLSST.bash\\
+\hspace*{0.333em} ~\$ setup lsst\_distrib\\
+\hspace*{0.333em} ~\$ git clone https://github.com/lsst/obs\_lsst.git\\
+\hspace*{0.333em} ~\$ cd obs\_lsst\\
+\hspace*{0.333em} ~\$ git checkout 5c12b06e6\\
+\hspace*{0.333em} ~\$ setup -k -r .\\
+\hspace*{0.333em} ~\$ scons
+
+\vspace{\dp0}
+} \end{minipage} \\
+\\ \midrule
+\multirow{1}{*}{ 3 } &
+\begin{minipage}[t]{13cm}{\footnotesize
+Ingest RTM-007 test data by executing the following
+commands:\\[2\baselineskip]\hspace*{0.333em}
+~OUTPUT\_REPO\_DIR=\$OUTPUT\_DATA\_DIR\\
+\hspace*{0.333em} ~INPUT\_DATA\_DIR=\$INPUT\_DATA\_DIR\\
+\hspace*{0.333em} ~mkdir -p \$OUTPUT\_REPO\_DIR\\
+\hspace*{0.333em} ~echo ``lsst.obs.lsst.ts8.Ts8Mapper'' \textgreater{}
+\$OUTPUT\_REPO\_DIR/\_mapper\\
+\hspace*{0.333em} ~ingestImages.py \$OUTPUT\_REPO\_DIR
+\$INPUT\_DATA\_DIR/*/*.fits\\
+\hspace*{0.333em} ~constructBias.py \$OUTPUT\_REPO\_DIR --rerun calibs
+--id imageType=BIAS --batch-type smp --cores 4\\
+\hspace*{0.333em} ~ingestCalibs.py \$OUTPUT\_REPO\_DIR --calibType bias
+\$OUTPUT\_REPO\_DIR/rerun/calibs/bias/*/*.fits --validity 9999 --output
+\$OUTPUT\_REPO\_DIR/CALIB
+--mode=link\\[2\baselineskip]Where:\\[2\baselineskip]\hspace*{0.333em}
+~\$OUTPUT\_DATA\_DIR is some location on shared storage to which the
+user has write permission;\\
+\hspace*{0.333em} ~\$INPUT\_DATA\_DIR is defined in the test case
+description.
+
+\vspace{\dp0}
+} \end{minipage} \\
+\\ \midrule
+\multirow{1}{*}{ 4 } &
+\begin{minipage}[t]{13cm}{\footnotesize
+Demonstrate that raw and bias data for visit \$VISIT\_ID have been made
+available in the repository. Load a Python interpreter (run ``python'')
+and execute the following:\\[2\baselineskip]\hspace*{0.333em} ~from
+lsst.daf.persistence import Butler\\
+\hspace*{0.333em} ~visit\_id = \$VISIT\_ID)\\
+\hspace*{0.333em} ~b = Butler(\$OUTPUT\_DATA\_DIR)\\
+\hspace*{0.333em} ~b.get(``raw'', visit=visit\_id, detector=2)\\
+\hspace*{0.333em} ~b.get(``bias'', visit=visit\_id, detector=2)
+
+\vspace{\dp0}
+} \end{minipage} \\
+\\ \midrule
+\end{longtable}
+
+
+
+\subsubsection{LVV-T368}
+
+This test will check:
+
+\begin{itemize}
+\tightlist
+\item
+  That Camera test data is available for processing in the LSST Data
+  Facility, and accessible through the LSST Science Platform;
+\item
+  That the Data Management I/O abstraction (the ``Data Butler'') can
+  load that data into the Science Platform environment;
+\item
+  That Data Management algorithmic ``tasks'' can be executed to process
+  that data;
+\item
+  That results can be displayed in the Firefly display tool.
+\end{itemize}
+
+
+\begin{longtable}[]{p{1.3cm}p{15cm}}
+%\toprule
+Step & {Description} \\ \toprule
+\endhead
+
+
+\multirow{1}{*}{ 1 } &
+\begin{minipage}[t]{13cm}{\footnotesize
+Connect to the Notebook Aspect of the Science Platform following the
+instructions at https://nb.lsst.io/. Log in, and ``spawn'' a new machine
+with image ``Weekly 2018\_45`` and size ``small''.
+
+\vspace{\dp0}
+} \end{minipage} \\
+\\ \midrule
+\multirow{1}{*}{ 2 } &
+\begin{minipage}[t]{13cm}{\footnotesize
+Create a terminal session. Use it to set up the LSST tools, then
+download and build version 5c12b06e6 of
+obs\_lsst:\\[2\baselineskip]\hspace*{0.333em} ~\$ source
+/opt/lsst/software/stack/loadLSST.bash\\
+\hspace*{0.333em} ~\$ setup lsst\_distrib\\
+\hspace*{0.333em} ~\$ git clone https://github.com/lsst/obs\_lsst.git\\
+\hspace*{0.333em} ~\$ cd obs\_lsst\\
+\hspace*{0.333em} ~\$ git checkout 5c12b06e6\\
+\hspace*{0.333em} ~\$ setup -k -r .\\
+\hspace*{0.333em} ~\$ scons\\[2\baselineskip]Arrange for obs\_lsst to
+automatically be added to the environment when starting a new
+notebook:\\[2\baselineskip]\hspace*{0.333em} ~\$ echo ``setup -j -r
+\textasciitilde{}/obs\_lsst'' \textgreater{}\textgreater{}
+notebooks/.user\_setups\\[2\baselineskip]Exit the terminal.
+
+\vspace{\dp0}
+} \end{minipage} \\
+\\ \midrule
+\multirow{1}{*}{ 3 } &
+\begin{minipage}[t]{13cm}{\footnotesize
+Create a new ``LSST'' notebook.\\[2\baselineskip]Import the standard
+libraries required for the rest of this
+test:\\[2\baselineskip]\hspace*{0.333em} ~import os\\
+\hspace*{0.333em} ~import lsst.afw.display as afwDisplay\\
+\hspace*{0.333em} ~from lsst.daf.persistence import Butler\\
+\hspace*{0.333em} ~from lsst.ip.isr import IsrTask\\
+\hspace*{0.333em} ~from firefly\_client import FireflyClient\\
+\hspace*{0.333em} ~from IPython.display import
+IFrame\\[2\baselineskip]and execute the cell.
+
+\vspace{\dp0}
+} \end{minipage} \\
+\\ \midrule
+\multirow{1}{*}{ 4 } &
+\begin{minipage}[t]{13cm}{\footnotesize
+Create a Data Butler client, and use it to retrieve the data which will
+be used for this test.\\[2\baselineskip]\hspace*{0.333em} ~butler =
+Butler(\$REPOSITORY\_PATH)\\
+\hspace*{0.333em} ~raw = butler.get(``raw'', visit=\$VISIT\_ID,
+detector=2)\\
+\hspace*{0.333em} ~bias = butler.get(``bias'', visit=\$VISIT\_ID,
+detector=2)
+
+\vspace{\dp0}
+} \end{minipage} \\
+\\ \midrule
+\multirow{1}{*}{ 5 } &
+\begin{minipage}[t]{13cm}{\footnotesize
+Initialize the Firefly display
+system:\\[2\baselineskip]\hspace*{0.333em} ~my\_channel =
+`\{\}\_test\_channel'.format(os.environ{[}'USER'{]})\\
+\hspace*{0.333em} ~server = `https://lsst-lspdev.ncsa.illinois.edu'\\
+\hspace*{0.333em}
+~ff='\{\}/firefly/slate.html?\_\_wsch=\{\}'.format(server,
+my\_channel)\\
+\hspace*{0.333em} ~IFrame(ff,800,600)\\
+\hspace*{0.333em} ~afwDisplay.setDefaultBackend('firefly')\\
+\hspace*{0.333em} ~afw\_display = afwDisplay.getDisplay(frame=1,\\
+\hspace*{0.333em} ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+~name=my\_channel)\\[2\baselineskip]Click on the link provided after
+executing the above.
+
+\vspace{\dp0}
+} \end{minipage} \\
+\\ \midrule
+\multirow{1}{*}{ 6 } &
+\begin{minipage}[t]{13cm}{\footnotesize
+Display the raw image data in the Firefly
+window:\\[2\baselineskip]\hspace*{0.333em} afw\_display.mtv(raw)
+
+\vspace{\dp0}
+} \end{minipage} \\
+\\ \midrule
+\multirow{1}{*}{ 7 } &
+\begin{minipage}[t]{13cm}{\footnotesize
+Configure and run an Instrument Signature Removal (ISR) task on the raw
+data. Most corrections are disabled for simplicity. but the bias frame
+is applied.\\
+\hspace*{0.333em}
+
+\begin{verbatim}
+   isr_config = IsrTask.ConfigClass()
+   isr_config.doDark=False
+   isr_config.doFlat=False
+   isr_config.doFringe=False
+   isr_config.doDefect=False
+   isr_config.doAddDistortionModel=False
+   isr_config.doLinearize=False
+   isr = IsrTask(config=isr_config)
+   result = isr.run(raw, bias=bias)
+\end{verbatim}
+
+\vspace{\dp0}
+} \end{minipage} \\
+\\ \midrule
+\multirow{1}{*}{ 8 } &
+\begin{minipage}[t]{13cm}{\footnotesize
+Display the corrected image data in the Firefly
+window:\\[2\baselineskip]\hspace*{0.333em}
+~afw\_display.mtv(result.exposure)
+
+\vspace{\dp0}
+} \end{minipage} \\
+\\ \midrule
+\end{longtable}
+
+
+
+
+\newpage
+
+\section{Test Results}
+\label{sect:testresults}
+
+\subsection{Overview of the Test Results}
+\label{sect:overview}
+
+\subsubsection{Summary Table}
+\label{sect:summarytable}
+
+
+\begin{longtable} {p{0.2\textwidth}p{0.2\textwidth}p{0.6\textwidth}}
+\toprule
+\multicolumn{3}{c}{ Test Cycle {\bf LVV-C19: LDM-503-07: Camera Data Processing }} \\\hline
+{\bf \footnotesize test case id} & {\bf \footnotesize status} & {\bf \footnotesize comment} \\\toprule
+LVV-T374 & Not Executed &  \\\hline
+LVV-T368 & Not Executed &  \\\hline
+\caption{Test Results Summary Table}
+\label{table:summary}
+\end{longtable}
+
+\subsubsection{Overall Assessment}
+\label{sect:overallassessment}
+
+
+\subsubsection{Recommended Improvements}
+\label{sect:recommendations}
+
+\subsection{Detailed Test Results}
+\label{sect:detailedtestresults}
+
+\end{document}
