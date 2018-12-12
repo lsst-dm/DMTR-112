@@ -11,7 +11,7 @@
 
 \begin{document}
 
-\def\milestoneName{Camera data processing}
+\def\milestoneName{Camera Data Processing}
 \def\milestoneId{LDM-503-07}
 \def\product{Data Management}
 
@@ -109,7 +109,7 @@ will exercise:
 \subsection{Document Overview}
 \label{sect:docoverview}
 
-This document is generated from Jira, obtaining the relevant information from the 
+This document was generated from Jira, obtaining the relevant information from the 
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testPlan/LVV-P16}{LVV-P16}
 ~Jira Test Plan and related Test Cycles (
   \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCycle/LVV-C19}{LVV-C19}
@@ -122,7 +122,7 @@ Section \ref{sect:configuration}  describes the configuration used for this test
 Section \ref{sect:personnel} lists all the individuals involved and describes their roles.
 %Section \ref{sect:plannedtestactivities} provides the list of planned test cycles and test cases, including all relevant information that fully describes the test campaign.
 
-Section \ref{sect:overview} provides a summary of the test results, including in an overview in Table \ref{table:summary}, an overall assessment statement and suggestions for possible improvements.
+Section \ref{sect:overview} provides a summary of the test results, including an overview in Table \ref{table:summary}, an overall assessment statement and suggestions for possible improvements.
 Section \ref{sect:detailedtestresults} provides detailed results for each step in each test case.
 
 The current status of test plan LVV-P16 in Jira is Draft.
@@ -157,7 +157,7 @@ relevant test cases.~
 \section{Personnel}
 \label{sect:personnel}
 
-Following personnel are involved in this test activity:
+The following personnel are involved in this test activity:
 
 \begin{itemize}
 \item Test Plan (LVV-P16) owner: John Swinbank
@@ -186,10 +186,10 @@ Following personnel are involved in this test activity:
   \multicolumn{3}{c}{ Test Cycle {\bf LVV-C19: LDM-503-07: Camera Data Processing }} \\\hline
   {\bf \footnotesize test case} & {\bf \footnotesize status} & {\bf \footnotesize comment} \\\toprule
     \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T368}{LVV-T368} 
-    & Not Executed & 
+    & Pass & 
     \\\hline
     \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T374}{LVV-T374} 
-    & Not Executed & 
+    & Pass & 
     \\\hline
 
 \caption{Test Results Summary}
@@ -199,12 +199,19 @@ Following personnel are involved in this test activity:
 \subsection{Overall Assessment}
 \label{sect:overallassessment}
 
-Not yet available.
+The test campaign has been successfully concluded.\\[2\baselineskip]All
+steps in the accompanying test scripts have been completed successfully.
+One minor typo was discovered in LVV-T368, but since it was a flaw in
+the test script rather than the system being tested, it is not regarded
+as germane to the success of this test campaign.
+
 
 \subsection{Recommended Improvements}
 \label{sect:recommendations}
 
-Not yet available.
+The typo in LVV-T368 step 2 (a missing ``\textasciitilde{}/'') should be
+resolved.
+
 
 \newpage
 \section{Detailed Test Results}
@@ -216,7 +223,7 @@ Not yet available.
 Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C19}{LDM-503-07: Camera Data Processing}} in Jira.
 
   LDM-503-07: Camera Data Processing\\
-  Status: Not Executed
+  Status: Done
 
   This test cycle defines tests to be performed in late 2018 to
 demonstrate the current state of integration between the Data Management
@@ -243,7 +250,8 @@ Portal Aspects of the Science Platform as described above.
 
     \paragraph{Test Case LVV-T368 }\mbox{}\\
 
-Open \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T368}{test case} in Jira.
+Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T368}{\textit{ LVV-T368 } }
+test case in Jira.
 
     This test will check:
 
@@ -284,7 +292,7 @@ In the test script, we refer to ``258334666'' as ``\$VISIT\_ID'' and
 data may be substituted as appropriate.
 
 
-    Execution status: {\bf Not Executed }
+    Execution status: {\bf Pass }
 
     Final comment:\\
 
@@ -316,12 +324,26 @@ with image ``Weekly 2018\_45`` and size ``small''.
 
       & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
       \begin{minipage}[t]{13cm}{\footnotesize
-      
+      \begin{itemize}
+\tightlist
+\item
+  The test was carried out at the University of Washington, which has a
+  Data Facility firewall exemption, so instructions at
+  https://nb.lsst.io/getting-started/logging-in.html describing
+  installing, configuring and connecting with a VPN client were skipped.
+\item
+  The ``Weekly 2018\_45'' image was not listed --- only the two most
+  recent weeklies are called out explicitly. However, ``w201845'' was
+  chosen as a close analog.
+\item
+  The JupyterLab environment appeared as expected.
+\end{itemize}
+
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
 
-      & Status          & Not Executed \\ \hline
+      & Status          & Pass \\ \hline
 
       2 & Description &
 
@@ -348,19 +370,28 @@ notebooks/.user\_setups\\[2\baselineskip]Exit the terminal.
       & Expected Result & 
 
       \begin{minipage}[t]{13cm}{\footnotesize
-      
+      No errors are seen during execution of the provided commands.
+
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
 
       & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
       \begin{minipage}[t]{13cm}{\footnotesize
-      
+      No expected result is provided.\\[2\baselineskip]Executing the final
+command returned:\\[2\baselineskip]\hspace*{0.333em} ~bash:
+notebooks/.user\_setups: No such file or directory\\[2\baselineskip]This
+is an obvious typo in the test script. Correcting the command
+to\\[2\baselineskip]\hspace*{0.333em} echo ``setup -j -r
+\textasciitilde{}/obs\_lsst'' \textgreater{}\textgreater{}
+\textasciitilde{}/notebooks/.user\_setups\\[2\baselineskip]caused it to
+execute successfully.
+
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
 
-      & Status          & Not Executed \\ \hline
+      & Status          & Pass \\ \hline
 
       3 & Description &
 
@@ -390,22 +421,23 @@ IFrame\\[2\baselineskip]and execute the cell.
 
       & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
       \begin{minipage}[t]{13cm}{\footnotesize
-      
+      The imports completed successfully.
+
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
 
-      & Status          & Not Executed \\ \hline
+      & Status          & Pass \\ \hline
 
       4 & Description &
 
       \begin{minipage}[t]{13cm}{\footnotesize
       Create a Data Butler client, and use it to retrieve the data which will
 be used for this test.\\[2\baselineskip]\hspace*{0.333em} ~butler =
-Butler(repository\_path)\\
-\hspace*{0.333em} ~raw = butler.get(``raw'', visit=visit\_id,
+Butler(\$REPOSITORY\_PATH)\\
+\hspace*{0.333em} ~raw = butler.get(``raw'', visit=\$VISIT\_ID,
 detector=2)\\
-\hspace*{0.333em} ~bias = butler.get(``bias'', visit=visit\_id,
+\hspace*{0.333em} ~bias = butler.get(``bias'', visit=\$VISIT\_ID,
 detector=2)
 
       \vspace{\dp0}
@@ -423,12 +455,13 @@ detector=2)
 
       & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
       \begin{minipage}[t]{13cm}{\footnotesize
-      
+      The commands were executed successfully.\\[2\baselineskip]
+
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
 
-      & Status          & Not Executed \\ \hline
+      & Status          & Pass \\ \hline
 
       5 & Description &
 
@@ -462,12 +495,13 @@ executing the above.
 
       & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
       \begin{minipage}[t]{13cm}{\footnotesize
-      
+      Firefly window appears.
+
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
 
-      & Status          & Not Executed \\ \hline
+      & Status          & Pass \\ \hline
 
       6 & Description &
 
@@ -490,12 +524,13 @@ window:\\[2\baselineskip]\hspace*{0.333em} afw\_display.mtv(raw)
 
       & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
       \begin{minipage}[t]{13cm}{\footnotesize
-      
+      Image data was seen in the Firefly window.
+
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
 
-      & Status          & Not Executed \\ \hline
+      & Status          & Pass \\ \hline
 
       7 & Description &
 
@@ -532,12 +567,13 @@ is applied.\\
 
       & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
       \begin{minipage}[t]{13cm}{\footnotesize
-      
+      Commands successfully executed.
+
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
 
-      & Status          & Not Executed \\ \hline
+      & Status          & Pass \\ \hline
 
       8 & Description &
 
@@ -561,19 +597,21 @@ window:\\[2\baselineskip]\hspace*{0.333em}
 
       & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
       \begin{minipage}[t]{13cm}{\footnotesize
-      
+      Processed data was displayed in the Firefly window.
+
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
 
-      & Status          & Not Executed \\ \hline
+      & Status          & Pass \\ \hline
 
     \end{longtable}
 
 
     \paragraph{Test Case LVV-T374 }\mbox{}\\
 
-Open \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T374}{test case} in Jira.
+Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T374}{\textit{ LVV-T374 } }
+test case in Jira.
 
     This test will check:
 
@@ -604,7 +642,7 @@ the string ``\$INPUT\_DATA\_DIR'' as an alias for
 or wherever this data has been moved to.\\[2\baselineskip]
 
 
-    Execution status: {\bf Not Executed }
+    Execution status: {\bf Pass }
 
     Final comment:\\
 
@@ -636,12 +674,26 @@ with image ``Weekly 2018\_45`` and size ``large''.
 
       & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
       \begin{minipage}[t]{13cm}{\footnotesize
-      
+      \begin{itemize}
+\tightlist
+\item
+  The test was carried out at the University of Washington, which has a
+  Data Facility firewall exemption, so instructions at
+  https://nb.lsst.io/getting-started/logging-in.html describing
+  installing, configuring and connecting with a VPN client were skipped.
+\item
+  The ``Weekly 2018\_45'' image was not listed --- only the two most
+  recent weeklies are called out explicitly. However, ``w201845'' was
+  chosen as a close analog.
+\item
+  The JupyterLab environment appeared as expected.
+\end{itemize}
+
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
 
-      & Status          & Not Executed \\ \hline
+      & Status          & Pass \\ \hline
 
       2 & Description &
 
@@ -672,12 +724,14 @@ obs\_lsst:\\[2\baselineskip]\hspace*{0.333em} ~\$ source
 
       & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
       \begin{minipage}[t]{13cm}{\footnotesize
-      
+      Commands were executed with no errors. Last line printed was ``scons:
+done building targets''.
+
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
 
-      & Status          & Not Executed \\ \hline
+      & Status          & Pass \\ \hline
 
       3 & Description &
 
@@ -718,12 +772,21 @@ status 0.
 
       & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
       \begin{minipage}[t]{13cm}{\footnotesize
-      
+      \begin{itemize}
+\tightlist
+\item
+  A number of ``WARN'' messages were logged during constructBias.py.
+  These are not important for the correct execution of the test, but
+  should be suppressed or included in the test description.
+\item
+  All commands executed successfully.
+\end{itemize}
+
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
 
-      & Status          & Not Executed \\ \hline
+      & Status          & Pass \\ \hline
 
       4 & Description &
 
@@ -732,7 +795,7 @@ status 0.
 available in the repository. Load a Python interpreter (run ``python'')
 and execute the following:\\[2\baselineskip]\hspace*{0.333em} ~from
 lsst.daf.persistence import Butler\\
-\hspace*{0.333em} ~visit\_id = \$VISIT\_ID)\\
+\hspace*{0.333em} ~visit\_id = \$VISIT\_ID\\
 \hspace*{0.333em} ~b = Butler(\$OUTPUT\_DATA\_DIR)\\
 \hspace*{0.333em} ~b.get(``raw'', visit=visit\_id, detector=2)\\
 \hspace*{0.333em} ~b.get(``bias'', visit=visit\_id, detector=2)
@@ -753,12 +816,41 @@ Warnings about lack of dark-time or WCS information may be ignored.
 
       & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
       \begin{minipage}[t]{13cm}{\footnotesize
-      
+      \$ python\\
+Python 3.6.6 \textbar{}Anaconda, Inc.\textbar{} (default, Jun 28 2018,
+17:14:51)\\
+{[}GCC 7.2.0{]} on linux\\
+Type ``help'', ``copyright'', ``credits'' or ``license'' for more
+information.\\
+\textgreater{}\textgreater{}\textgreater{} from lsst.daf.persistence
+import Butler\\
+\textgreater{}\textgreater{}\textgreater{} visit\_id = 258334666\\
+\textgreater{}\textgreater{}\textgreater{} b =
+Butler('/scratch/swinbank/ldm50307')\\
+CameraMapper INFO: Loading exposure registry from
+/scratch/swinbank/ldm50307/registry.sqlite3\\
+CameraMapper INFO: Loading calib registry from
+/scratch/swinbank/ldm50307/CALIB/calibRegistry.sqlite3\\
+\textgreater{}\textgreater{}\textgreater{} b.get(``raw'',
+visit=visit\_id, detector=2)\\
+CameraMapper WARN: Key=``DARKTIME'' not in metadata\\
+CameraMapper INFO: darkTime is NaN/Inf; using exposureTime\\
+LsstCamMapper WARN: Unable to set WCS for DataId(initialdata=\{'visit':
+258334666, `detector': 2\}, tag=set()) from header as
+RATEL/DECTEL/ROTANGLE are unavailable\\
+\textless{}lsst.afw.image.exposure.exposure.ExposureF object at
+0x7ff07235ea78\textgreater{}\\
+\textgreater{}\textgreater{}\textgreater{} b.get(``bias'',
+visit=visit\_id, detector=2)\\
+\textless{}lsst.afw.image.exposure.exposure.ExposureF object at
+0x7ff09a8b88f0\textgreater{}\\
+\textgreater{}\textgreater{}\textgreater{}
+
       \vspace{\dp0}
       } \end{minipage} \\
       \\ \cdashline{2-3}
 
-      & Status          & Not Executed \\ \hline
+      & Status          & Pass \\ \hline
 
     \end{longtable}
 
