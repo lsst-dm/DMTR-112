@@ -1,6 +1,8 @@
 \documentclass[DM,lsstdraft,STR,toc]{lsstdoc}
 \usepackage{geometry}
 \usepackage{longtable,booktabs}
+\usepackage{enumitem}
+\usepackage{arydshln}
 
 \input meta.tex
 
@@ -9,7 +11,7 @@
 
 \begin{document}
 
-\def\milestoneName{Camera data processing}
+\def\milestoneName{Camera Data Processing}
 \def\milestoneId{LDM-503-07}
 \def\product{Data Management}
 
@@ -25,7 +27,7 @@
 
 
 \setDocAbstract{
-This is the test plan and report for \milestoneId{} (\milestoneName{}), an LSST DM level 1 milestone pertaining to the \product{}.
+This is the test plan and report for \milestoneId{} (\milestoneName{}), an LSST level 2 milestone pertaining to the \product{} component provided by the Data Management Subsystem.
 }
 
 
@@ -96,58 +98,49 @@ will exercise:
   and Tools group.
 \end{itemize}
 
-\textbf{Applicable Documents}\\[2\baselineskip]\citeds{LDM-503} Data Management
-Test Plan\\
+\subsection{Applicable Documents}\label{applicable-documents}
+
+\citeds{LDM-503} Data Management Test Plan\\
 \citeds{LDM-151} Data Management Science Pipelines Design\\
 \citeds{LDM-152} Data Management Middleware Design\\
 \citeds{LDM-542} Science Platform Design
 
 
+\subsection{Document Overview}
+\label{sect:docoverview}
+
+This document was generated from Jira, obtaining the relevant information from the 
+\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testPlan/LVV-P16}{LVV-P16}
+~Jira Test Plan and related Test Cycles (
+  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCycle/LVV-C19}{LVV-C19}
+).
+
+%The following general sections are completed before the start of the test activity.
+
+Section \ref{sect:intro} provides an overview of the test campaign, the system under test (\product{}), the applicable documentation, and explains how this document is organized.
+Section \ref{sect:configuration}  describes the configuration used for this test.
+Section \ref{sect:personnel} lists all the individuals involved and describes their roles.
+%Section \ref{sect:plannedtestactivities} provides the list of planned test cycles and test cases, including all relevant information that fully describes the test campaign.
+
+Section \ref{sect:overview} provides a summary of the test results, including an overview in Table \ref{table:summary}, an overall assessment statement and suggestions for possible improvements.
+Section \ref{sect:detailedtestresults} provides detailed results for each step in each test case.
+
+The current status of test plan LVV-P16 in Jira is Approved.
+
 \subsection{References}
 \label{sect:references}
 \renewcommand{\refname}{}
 \bibliography{lsst,refs,books,refs_ads}
-
-\subsection{Document Overview and Procedure}
-\label{sect:docoverview}
-
-This document is generated from Jira, obtaining the relevant information from the 
-\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testPlan/LVV-P16}{LVV-P16}
-~Jira Test Plan and related Test Cycles (
-\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCycle/LVV-C19}{LVV-C19}
-).
-
-The following general sections are completed before the start of the test activity.
-
-Section \ref{sect:intro} provides an overview of the test campaign, the system under test (\product{}), the documentation, and explains how this document is organized.
-Section \ref{sect:configuration}  describes the configuration used for this test.
-Section \ref{sect:personnel} lists all people and roles involved.
-Section \ref{sect:plannedtestactivities} provides the list of planned test cycles and test cases, including all relevant information that fully describes the test campaign.
-The content provided by the above sections shall be sufficient to prove that the test campaign is ready to start.
-
-Once the above sections are completed, this document can be reviewed by the product leader, the involved personnel (section \ref{sect:personnel}), and the test campaign requester.
-Once all stakeholders agree that the test pre-requisites have been satisfied, testing can begin and the Jira Test Plan shall be set to {\bf Approved} by the \product{} product leader.
-A first issue of this document can be uploaded to docushare for the record.
-
-Section \ref{sect:testresults} is filled in after the test activity is completed and all Jira Test Cycles have been set to {\bf Done}.
-The first subsection \ref{sect:overview} provides a summary view of the results, in table \ref{table:summary}, 
-an overall assessment statement and suggestions on possible improvements.
-The subsection \ref{sect:detailedtestresults} provides detailed results for each step in each test case.
-
-When completed, this document must be approved by the requester of the test activity and
-the final issued report uploaded to docushate. 
-The status of the Jira Test Plan shall then be set to {\bf Completed}.
-
-The actual status of the Jira test plan LVV-P16 is Draft.
-
 \section{Test Configuration}
 \label{sect:configuration}
 
-Observing is not required for this test campaign.
+\subsection{Data Collection}
+
+  Observing is not required for this test campaign.
 
 \subsection{Verification Environment}
 \label{sect:hwconf}
-Tests of the Data Butler, the Science Pipelines and the Firefly image
+  Tests of the Data Butler, the Science Pipelines and the Firefly image
 display tool will take place within the Notebook Aspect of the LSST
 Science Platform, as deployed at
 \url{https://lsst-lspdev.ncsa.illinois.edu/nb} and documented at
@@ -164,42 +157,463 @@ relevant test cases.~
 \section{Personnel}
 \label{sect:personnel}
 
-Following personnel are involved in this test activity:
+The following personnel are involved in this test activity:
 
 \begin{itemize}
-\item Test Plan (LVV-P16) owner: John Swinbank (swinbank)
+\item Test Plan (LVV-P16) owner: John Swinbank
 \item Test Cycles:
 \begin{itemize}
   \item LVV-C19 owner: 
-Undefined
+    Undefined
   \begin{itemize}
-    \item Test case LVV-T374 tester: John Swinbank (swinbank)
-    \item Test case LVV-T368 tester: John Swinbank (swinbank)
+    \item Test case LVV-T374 tester: John Swinbank
+    \item Test case LVV-T368 tester: John Swinbank
   \end{itemize}
 \end{itemize}
 \item Additional Test Personnel involved: None
 \end{itemize}
 
 \newpage
-\section{Planned Test Activities}
-\label{sect:plannedtestactivities}
+
+\section{Overview of the Test Results}
+\label{sect:overview}
+
+\subsection{Summary}
+\label{sect:summarytable}
+
+\begin{longtable} {p{0.2\textwidth}p{0.2\textwidth}p{0.6\textwidth}}
+\toprule
+  \multicolumn{3}{c}{ Test Cycle {\bf LVV-C19: LDM-503-07: Camera Data Processing }} \\\hline
+  {\bf \footnotesize test case} & {\bf \footnotesize status} & {\bf \footnotesize comment} \\\toprule
+    \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T368}{LVV-T368} 
+    & Pass & 
+    \\\hline
+    \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T374}{LVV-T374} 
+    & Pass & 
+    \\\hline
+
+\caption{Test Results Summary}
+\label{table:summary}
+\end{longtable}
+
+\subsection{Overall Assessment}
+\label{sect:overallassessment}
+
+The test campaign has been successfully concluded.\\[2\baselineskip]All
+steps in the accompanying test scripts have been completed successfully.
+One minor typo was discovered in LVV-T368, but since it was a flaw in
+the test script rather than the system being tested, it is not regarded
+as germane to the success of this test campaign.
 
 
-\subsection{Test Cycle LVV-C19}
+\subsection{Recommended Improvements}
+\label{sect:recommendations}
 
-LDM-503-07: Camera Data Processing\\
-Status: Not Executed
+The typo in LVV-T368 step 2 (a missing ``\textasciitilde{}/'') should be
+resolved.
 
 
-This test cycle defines tests to be performed in late 2018 to
+\newpage
+\section{Detailed Test Results}
+\label{sect:detailedtestresults}
+
+
+  \subsection{Test Cycle LVV-C19 }
+
+Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C19}{LDM-503-07: Camera Data Processing}} in Jira.
+
+  LDM-503-07: Camera Data Processing\\
+  Status: Done
+
+  This test cycle defines tests to be performed in late 2018 to
 demonstrate the current state of integration between the Data Management
 System and current Camera test datasets.
 
 
+  \subsubsection{Software Version/Baseline}
+    This test will be carried out on whatever versions of the LSST Science
+Platform Notebook Aspect and Portal Aspect are installed on
+lsst-lspdev.ncsa.illinois.edu at the time of testing. No particular
+version requirements are specified on those
+tools.\\[2\baselineskip]Pipelines tests will be based on the weekly
+w\_2018\_45 version of the codebase.~
 
-\subsubsection{LVV-T374 Test Case}
 
-This test will check:
+  \subsubsection{Configuration}
+    No specific configuration is required beyond the availability of the
+GPFS filesystem at the LSST Data Facility and access to the Notebook and
+Portal Aspects of the Science Platform as described above.
+
+
+  \subsubsection{Test Cases in LVV-C19 Test Cycle}
+
+
+    \paragraph{Test Case LVV-T368 }\mbox{}\\
+
+Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T368}{\textit{ LVV-T368 } }
+test case in Jira.
+
+    This test will check:
+
+\begin{itemize}
+\tightlist
+\item
+  That Camera test data is available for processing in the LSST Data
+  Facility, and accessible through the LSST Science Platform;
+\item
+  That the Data Management I/O abstraction (the ``Data Butler'') can
+  load that data into the Science Platform environment;
+\item
+  That Data Management algorithmic ``tasks'' can be executed to process
+  that data;
+\item
+  That results can be displayed in the Firefly display tool.
+\end{itemize}
+
+
+    {\bf Preconditions}:\\
+    Appropriate data --- to include a ``raw'' and a ``bias'' exposure ---
+from the Camera test systems must be available in a Butler data
+repository on a filesystem accessible to the Notebook Aspect of the
+Science Platform.\\[2\baselineskip]For the purposes of the following
+discussion, we assume that:\\[2\baselineskip]
+
+\begin{itemize}
+\tightlist
+\item
+  Visit 258334666 from RTM (Raft Tower Module) 007 will be used;
+\item
+  The data is available in a repository at
+  /project/bootcamp/repo\_RTM-007/ on the Data Facility GPFS filesystem
+\end{itemize}
+
+In the test script, we refer to ``258334666'' as ``\$VISIT\_ID'' and
+``/project/bootcamp/repo\_RTM-007/'' as ``\$REPOSITORY\_PATH''; other
+data may be substituted as appropriate.
+
+
+    Execution status: {\bf Pass }
+
+    Final comment:\\
+
+
+    Detailed step results:
+
+    \begin{longtable}{p{1cm}p{2cm}p{13cm}}
+    \hline
+    {Step} & \multicolumn{2}{c}{Description, Results and Status}\\ \hline
+      1 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Connect to the Notebook Aspect of the Science Platform following the
+instructions at https://nb.lsst.io/. Log in, and ``spawn'' a new machine
+with image ``Weekly 2018\_45`` and size ``small''.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Expected Result & 
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      The JupyterLab environment appears.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      \begin{itemize}
+\tightlist
+\item
+  The test was carried out at the University of Washington, which has a
+  Data Facility firewall exemption, so instructions at
+  https://nb.lsst.io/getting-started/logging-in.html describing
+  installing, configuring and connecting with a VPN client were skipped.
+\item
+  The ``Weekly 2018\_45'' image was not listed --- only the two most
+  recent weeklies are called out explicitly. However, ``w201845'' was
+  chosen as a close analog.
+\item
+  The JupyterLab environment appeared as expected.
+\end{itemize}
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Status          & Pass \\ \hline
+
+      2 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Create a terminal session. Use it to set up the LSST tools, then
+download and build version 5c12b06e6 of
+obs\_lsst:\\[2\baselineskip]\hspace*{0.333em} ~\$ source
+/opt/lsst/software/stack/loadLSST.bash\\
+\hspace*{0.333em} ~\$ setup lsst\_distrib\\
+\hspace*{0.333em} ~\$ git clone https://github.com/lsst/obs\_lsst.git\\
+\hspace*{0.333em} ~\$ cd obs\_lsst\\
+\hspace*{0.333em} ~\$ git checkout 5c12b06e6\\
+\hspace*{0.333em} ~\$ setup -k -r .\\
+\hspace*{0.333em} ~\$ scons\\[2\baselineskip]Arrange for obs\_lsst to
+automatically be added to the environment when starting a new
+notebook:\\[2\baselineskip]\hspace*{0.333em} ~\$ echo ``setup -j -r
+\textasciitilde{}/obs\_lsst'' \textgreater{}\textgreater{}
+notebooks/.user\_setups\\[2\baselineskip]Exit the terminal.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Expected Result & 
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      No errors are seen during execution of the provided commands.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      No expected result is provided.\\[2\baselineskip]Executing the final
+command returned:\\[2\baselineskip]\hspace*{0.333em} ~bash:
+notebooks/.user\_setups: No such file or directory\\[2\baselineskip]This
+is an obvious typo in the test script. Correcting the command
+to\\[2\baselineskip]\hspace*{0.333em} echo ``setup -j -r
+\textasciitilde{}/obs\_lsst'' \textgreater{}\textgreater{}
+\textasciitilde{}/notebooks/.user\_setups\\[2\baselineskip]caused it to
+execute successfully.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Status          & Pass \\ \hline
+
+      3 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Create a new ``LSST'' notebook.\\[2\baselineskip]Import the standard
+libraries required for the rest of this
+test:\\[2\baselineskip]\hspace*{0.333em} ~import os\\
+\hspace*{0.333em} ~import lsst.afw.display as afwDisplay\\
+\hspace*{0.333em} ~from lsst.daf.persistence import Butler\\
+\hspace*{0.333em} ~from lsst.ip.isr import IsrTask\\
+\hspace*{0.333em} ~from firefly\_client import FireflyClient\\
+\hspace*{0.333em} ~from IPython.display import
+IFrame\\[2\baselineskip]and execute the cell.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Expected Result & 
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Nothing is printed.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      The imports completed successfully.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Status          & Pass \\ \hline
+
+      4 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Create a Data Butler client, and use it to retrieve the data which will
+be used for this test.\\[2\baselineskip]\hspace*{0.333em} ~butler =
+Butler(\$REPOSITORY\_PATH)\\
+\hspace*{0.333em} ~raw = butler.get(``raw'', visit=\$VISIT\_ID,
+detector=2)\\
+\hspace*{0.333em} ~bias = butler.get(``bias'', visit=\$VISIT\_ID,
+detector=2)
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Expected Result & 
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Nothing is printed.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      The commands were executed successfully.\\[2\baselineskip]
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Status          & Pass \\ \hline
+
+      5 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Initialize the Firefly display
+system:\\[2\baselineskip]\hspace*{0.333em} ~my\_channel =
+`\{\}\_test\_channel'.format(os.environ{[}'USER'{]})\\
+\hspace*{0.333em} ~server = `https://lsst-lspdev.ncsa.illinois.edu'\\
+\hspace*{0.333em}
+~ff='\{\}/firefly/slate.html?\_\_wsch=\{\}'.format(server,
+my\_channel)\\
+\hspace*{0.333em} ~IFrame(ff,800,600)\\
+\hspace*{0.333em} ~afwDisplay.setDefaultBackend('firefly')\\
+\hspace*{0.333em} ~afw\_display = afwDisplay.getDisplay(frame=1,\\
+\hspace*{0.333em} ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+~name=my\_channel)\\[2\baselineskip]Click on the link provided after
+executing the above.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Expected Result & 
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      A Firefly window is shown.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Firefly window appears.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Status          & Pass \\ \hline
+
+      6 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Display the raw image data in the Firefly
+window:\\[2\baselineskip]\hspace*{0.333em} afw\_display.mtv(raw)
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Expected Result & 
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Raw image data is displayed.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Image data was seen in the Firefly window.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Status          & Pass \\ \hline
+
+      7 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Configure and run an Instrument Signature Removal (ISR) task on the raw
+data. Most corrections are disabled for simplicity. but the bias frame
+is applied.\\
+\hspace*{0.333em}
+
+\begin{verbatim}
+   isr_config = IsrTask.ConfigClass()
+   isr_config.doDark=False
+   isr_config.doFlat=False
+   isr_config.doFringe=False
+   isr_config.doDefect=False
+   isr_config.doAddDistortionModel=False
+   isr_config.doLinearize=False
+   isr = IsrTask(config=isr_config)
+   result = isr.run(raw, bias=bias)
+\end{verbatim}
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Expected Result & 
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Nothing is printed.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Commands successfully executed.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Status          & Pass \\ \hline
+
+      8 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Display the corrected image data in the Firefly
+window:\\[2\baselineskip]\hspace*{0.333em}
+~afw\_display.mtv(result.exposure)
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Expected Result & 
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Processed (trimmed, bias-subtracted) image data is displayed.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Processed data was displayed in the Firefly window.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Status          & Pass \\ \hline
+
+    \end{longtable}
+
+
+    \paragraph{Test Case LVV-T374 }\mbox{}\\
+
+Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T374}{\textit{ LVV-T374 } }
+test case in Jira.
+
+    This test will check:
 
 \begin{itemize}
 \tightlist
@@ -212,24 +626,79 @@ This test will check:
 \end{itemize}
 
 
-\begin{longtable}[]{p{1.3cm}p{15cm}}
-%\toprule
-Step & {Description} \\ \toprule
-\endhead
+    {\bf Preconditions}:\\
+    Appropriate raw data from Camera test systems must be available on a
+filesystem within the LSST Data Facility. This test data is assumed to
+include visit 258334666 (hereafter referred to as \$VISIT\_ID) from RTM
+(Raft Tower Module) 007 for the purposes of this test, but other,
+equivalent, may be substituted.\\[2\baselineskip]At time of writing,
+suitable data may be found on the GPFS filesystem at
+/project/bootcamp/data/LCA-11021\_RTM-007/7086/fe55\_raft\_acq/v0/44981.
+In future, as data transport procedures to the Data Facility become more
+streamlined and formalised, this data may be moved elsewhere or made
+available through some other system. Throughout the test script, we use
+the string ``\$INPUT\_DATA\_DIR'' as an alias for
+``/project/bootcamp/data/LCA-11021\_RTM-007/7086/fe55\_raft\_acq/v0/44981'',
+or wherever this data has been moved to.\\[2\baselineskip]
 
 
-\multirow{1}{*}{ 1 } &
-\begin{minipage}[t]{13cm}{\footnotesize
-Connect to the Notebook Aspect of the Science Platform following the
+    Execution status: {\bf Pass }
+
+    Final comment:\\
+
+
+    Detailed step results:
+
+    \begin{longtable}{p{1cm}p{2cm}p{13cm}}
+    \hline
+    {Step} & \multicolumn{2}{c}{Description, Results and Status}\\ \hline
+      1 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Connect to the Notebook Aspect of the Science Platform following the
 instructions at https://nb.lsst.io/. Log in, and ``spawn'' a new machine
 with image ``Weekly 2018\_45`` and size ``large''.
 
-\vspace{\dp0}
-} \end{minipage} \\
-\\ \midrule
-\multirow{1}{*}{ 2 } &
-\begin{minipage}[t]{13cm}{\footnotesize
-Create a terminal session. Use it to set up the LSST tools, then
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Expected Result & 
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      The JupyterLab environment appears.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      \begin{itemize}
+\tightlist
+\item
+  The test was carried out at the University of Washington, which has a
+  Data Facility firewall exemption, so instructions at
+  https://nb.lsst.io/getting-started/logging-in.html describing
+  installing, configuring and connecting with a VPN client were skipped.
+\item
+  The ``Weekly 2018\_45'' image was not listed --- only the two most
+  recent weeklies are called out explicitly. However, ``w201845'' was
+  chosen as a close analog.
+\item
+  The JupyterLab environment appeared as expected.
+\end{itemize}
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Status          & Pass \\ \hline
+
+      2 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Create a terminal session. Use it to set up the LSST tools, then
 download and build version 5c12b06e6 of
 obs\_lsst:\\[2\baselineskip]\hspace*{0.333em} ~\$ source
 /opt/lsst/software/stack/loadLSST.bash\\
@@ -240,12 +709,34 @@ obs\_lsst:\\[2\baselineskip]\hspace*{0.333em} ~\$ source
 \hspace*{0.333em} ~\$ setup -k -r .\\
 \hspace*{0.333em} ~\$ scons
 
-\vspace{\dp0}
-} \end{minipage} \\
-\\ \midrule
-\multirow{1}{*}{ 3 } &
-\begin{minipage}[t]{13cm}{\footnotesize
-Ingest RTM-007 test data by executing the following
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Expected Result & 
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      No errors are seen during execution of the provided commands.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Commands were executed with no errors. Last line printed was ``scons:
+done building targets''.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Status          & Pass \\ \hline
+
+      3 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Ingest RTM-007 test data by executing the following
 commands:\\[2\baselineskip]\hspace*{0.333em}
 ~OUTPUT\_REPO\_DIR=\$OUTPUT\_DATA\_DIR\\
 \hspace*{0.333em} ~INPUT\_DATA\_DIR=\$INPUT\_DATA\_DIR\\
@@ -265,203 +756,104 @@ user has write permission;\\
 \hspace*{0.333em} ~\$INPUT\_DATA\_DIR is defined in the test case
 description.
 
-\vspace{\dp0}
-} \end{minipage} \\
-\\ \midrule
-\multirow{1}{*}{ 4 } &
-\begin{minipage}[t]{13cm}{\footnotesize
-Demonstrate that raw and bias data for visit \$VISIT\_ID have been made
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Expected Result & 
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Many status messages are logged to screen, and the command exits with
+status 0.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      \begin{itemize}
+\tightlist
+\item
+  A number of ``WARN'' messages were logged during constructBias.py.
+  These are not important for the correct execution of the test, but
+  should be suppressed or included in the test description.
+\item
+  All commands executed successfully.
+\end{itemize}
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Status          & Pass \\ \hline
+
+      4 & Description &
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Demonstrate that raw and bias data for visit \$VISIT\_ID have been made
 available in the repository. Load a Python interpreter (run ``python'')
 and execute the following:\\[2\baselineskip]\hspace*{0.333em} ~from
 lsst.daf.persistence import Butler\\
-\hspace*{0.333em} ~visit\_id = \$VISIT\_ID)\\
+\hspace*{0.333em} ~visit\_id = \$VISIT\_ID\\
 \hspace*{0.333em} ~b = Butler(\$OUTPUT\_DATA\_DIR)\\
 \hspace*{0.333em} ~b.get(``raw'', visit=visit\_id, detector=2)\\
 \hspace*{0.333em} ~b.get(``bias'', visit=visit\_id, detector=2)
 
-\vspace{\dp0}
-} \end{minipage} \\
-\\ \midrule
-\end{longtable}
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Expected Result & 
+
+      \begin{minipage}[t]{13cm}{\footnotesize
+      Each call to b.get() returns an instance of an ExposureF object.
+Warnings about lack of dark-time or WCS information may be ignored.
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & \begin{minipage}[t]{2cm}{Actual\\ Result}\end{minipage}   & 
+      \begin{minipage}[t]{13cm}{\footnotesize
+      \$ python\\
+Python 3.6.6 \textbar{}Anaconda, Inc.\textbar{} (default, Jun 28 2018,
+17:14:51)\\
+{[}GCC 7.2.0{]} on linux\\
+Type ``help'', ``copyright'', ``credits'' or ``license'' for more
+information.\\
+\textgreater{}\textgreater{}\textgreater{} from lsst.daf.persistence
+import Butler\\
+\textgreater{}\textgreater{}\textgreater{} visit\_id = 258334666\\
+\textgreater{}\textgreater{}\textgreater{} b =
+Butler('/scratch/swinbank/ldm50307')\\
+CameraMapper INFO: Loading exposure registry from
+/scratch/swinbank/ldm50307/registry.sqlite3\\
+CameraMapper INFO: Loading calib registry from
+/scratch/swinbank/ldm50307/CALIB/calibRegistry.sqlite3\\
+\textgreater{}\textgreater{}\textgreater{} b.get(``raw'',
+visit=visit\_id, detector=2)\\
+CameraMapper WARN: Key=``DARKTIME'' not in metadata\\
+CameraMapper INFO: darkTime is NaN/Inf; using exposureTime\\
+LsstCamMapper WARN: Unable to set WCS for DataId(initialdata=\{'visit':
+258334666, `detector': 2\}, tag=set()) from header as
+RATEL/DECTEL/ROTANGLE are unavailable\\
+\textless{}lsst.afw.image.exposure.exposure.ExposureF object at
+0x7ff07235ea78\textgreater{}\\
+\textgreater{}\textgreater{}\textgreater{} b.get(``bias'',
+visit=visit\_id, detector=2)\\
+\textless{}lsst.afw.image.exposure.exposure.ExposureF object at
+0x7ff09a8b88f0\textgreater{}\\
+\textgreater{}\textgreater{}\textgreater{}
+
+      \vspace{\dp0}
+      } \end{minipage} \\
+      \\ \cdashline{2-3}
+
+      & Status          & Pass \\ \hline
+
+    \end{longtable}
 
 
-
-\subsubsection{LVV-T368 Test Case}
-
-This test will check:
-
-\begin{itemize}
-\tightlist
-\item
-  That Camera test data is available for processing in the LSST Data
-  Facility, and accessible through the LSST Science Platform;
-\item
-  That the Data Management I/O abstraction (the ``Data Butler'') can
-  load that data into the Science Platform environment;
-\item
-  That Data Management algorithmic ``tasks'' can be executed to process
-  that data;
-\item
-  That results can be displayed in the Firefly display tool.
-\end{itemize}
-
-
-\begin{longtable}[]{p{1.3cm}p{15cm}}
-%\toprule
-Step & {Description} \\ \toprule
-\endhead
-
-
-\multirow{1}{*}{ 1 } &
-\begin{minipage}[t]{13cm}{\footnotesize
-Connect to the Notebook Aspect of the Science Platform following the
-instructions at https://nb.lsst.io/. Log in, and ``spawn'' a new machine
-with image ``Weekly 2018\_45`` and size ``small''.
-
-\vspace{\dp0}
-} \end{minipage} \\
-\\ \midrule
-\multirow{1}{*}{ 2 } &
-\begin{minipage}[t]{13cm}{\footnotesize
-Create a terminal session. Use it to set up the LSST tools, then
-download and build version 5c12b06e6 of
-obs\_lsst:\\[2\baselineskip]\hspace*{0.333em} ~\$ source
-/opt/lsst/software/stack/loadLSST.bash\\
-\hspace*{0.333em} ~\$ setup lsst\_distrib\\
-\hspace*{0.333em} ~\$ git clone https://github.com/lsst/obs\_lsst.git\\
-\hspace*{0.333em} ~\$ cd obs\_lsst\\
-\hspace*{0.333em} ~\$ git checkout 5c12b06e6\\
-\hspace*{0.333em} ~\$ setup -k -r .\\
-\hspace*{0.333em} ~\$ scons\\[2\baselineskip]Arrange for obs\_lsst to
-automatically be added to the environment when starting a new
-notebook:\\[2\baselineskip]\hspace*{0.333em} ~\$ echo ``setup -j -r
-\textasciitilde{}/obs\_lsst'' \textgreater{}\textgreater{}
-notebooks/.user\_setups\\[2\baselineskip]Exit the terminal.
-
-\vspace{\dp0}
-} \end{minipage} \\
-\\ \midrule
-\multirow{1}{*}{ 3 } &
-\begin{minipage}[t]{13cm}{\footnotesize
-Create a new ``LSST'' notebook.\\[2\baselineskip]Import the standard
-libraries required for the rest of this
-test:\\[2\baselineskip]\hspace*{0.333em} ~import os\\
-\hspace*{0.333em} ~import lsst.afw.display as afwDisplay\\
-\hspace*{0.333em} ~from lsst.daf.persistence import Butler\\
-\hspace*{0.333em} ~from lsst.ip.isr import IsrTask\\
-\hspace*{0.333em} ~from firefly\_client import FireflyClient\\
-\hspace*{0.333em} ~from IPython.display import
-IFrame\\[2\baselineskip]and execute the cell.
-
-\vspace{\dp0}
-} \end{minipage} \\
-\\ \midrule
-\multirow{1}{*}{ 4 } &
-\begin{minipage}[t]{13cm}{\footnotesize
-Create a Data Butler client, and use it to retrieve the data which will
-be used for this test.\\[2\baselineskip]\hspace*{0.333em} ~butler =
-Butler(\$REPOSITORY\_PATH)\\
-\hspace*{0.333em} ~raw = butler.get(``raw'', visit=\$VISIT\_ID,
-detector=2)\\
-\hspace*{0.333em} ~bias = butler.get(``bias'', visit=\$VISIT\_ID,
-detector=2)
-
-\vspace{\dp0}
-} \end{minipage} \\
-\\ \midrule
-\multirow{1}{*}{ 5 } &
-\begin{minipage}[t]{13cm}{\footnotesize
-Initialize the Firefly display
-system:\\[2\baselineskip]\hspace*{0.333em} ~my\_channel =
-`\{\}\_test\_channel'.format(os.environ{[}'USER'{]})\\
-\hspace*{0.333em} ~server = `https://lsst-lspdev.ncsa.illinois.edu'\\
-\hspace*{0.333em}
-~ff='\{\}/firefly/slate.html?\_\_wsch=\{\}'.format(server,
-my\_channel)\\
-\hspace*{0.333em} ~IFrame(ff,800,600)\\
-\hspace*{0.333em} ~afwDisplay.setDefaultBackend('firefly')\\
-\hspace*{0.333em} ~afw\_display = afwDisplay.getDisplay(frame=1,\\
-\hspace*{0.333em} ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-~name=my\_channel)\\[2\baselineskip]Click on the link provided after
-executing the above.
-
-\vspace{\dp0}
-} \end{minipage} \\
-\\ \midrule
-\multirow{1}{*}{ 6 } &
-\begin{minipage}[t]{13cm}{\footnotesize
-Display the raw image data in the Firefly
-window:\\[2\baselineskip]\hspace*{0.333em} afw\_display.mtv(raw)
-
-\vspace{\dp0}
-} \end{minipage} \\
-\\ \midrule
-\multirow{1}{*}{ 7 } &
-\begin{minipage}[t]{13cm}{\footnotesize
-Configure and run an Instrument Signature Removal (ISR) task on the raw
-data. Most corrections are disabled for simplicity. but the bias frame
-is applied.\\
-\hspace*{0.333em}
-
-\begin{verbatim}
-   isr_config = IsrTask.ConfigClass()
-   isr_config.doDark=False
-   isr_config.doFlat=False
-   isr_config.doFringe=False
-   isr_config.doDefect=False
-   isr_config.doAddDistortionModel=False
-   isr_config.doLinearize=False
-   isr = IsrTask(config=isr_config)
-   result = isr.run(raw, bias=bias)
-\end{verbatim}
-
-\vspace{\dp0}
-} \end{minipage} \\
-\\ \midrule
-\multirow{1}{*}{ 8 } &
-\begin{minipage}[t]{13cm}{\footnotesize
-Display the corrected image data in the Firefly
-window:\\[2\baselineskip]\hspace*{0.333em}
-~afw\_display.mtv(result.exposure)
-
-\vspace{\dp0}
-} \end{minipage} \\
-\\ \midrule
-\end{longtable}
-
-
-
-
-\newpage
-
-\section{Test Results}
-\label{sect:testresults}
-
-\subsection{Overview of the Test Results}
-\label{sect:overview}
-
-\subsubsection{Summary Table}
-\label{sect:summarytable}
-
-
-\begin{longtable} {p{0.2\textwidth}p{0.2\textwidth}p{0.6\textwidth}}
-\toprule
-\multicolumn{3}{c}{ Test Cycle {\bf LVV-C19: LDM-503-07: Camera Data Processing }} \\\hline
-{\bf \footnotesize test case id} & {\bf \footnotesize status} & {\bf \footnotesize comment} \\\toprule
-LVV-T374 & Not Executed &  \\\hline
-LVV-T368 & Not Executed &  \\\hline
-\caption{Test Results Summary Table}
-\label{table:summary}
-\end{longtable}
-
-\subsubsection{Overall Assessment}
-\label{sect:overallassessment}
-
-
-\subsubsection{Recommended Improvements}
-\label{sect:recommendations}
-
-\subsection{Detailed Test Results}
-\label{sect:detailedtestresults}
-
+\input{appendix.tex}
 \end{document}
